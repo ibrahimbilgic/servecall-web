@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servecall</title>
+<meta name="description" content="Servecall keeps score for racket and net sports and calls it out loud. Support and privacy.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23C8F03A'/%3E%3Cpath d='M4.2 5.2c4.2 3.6 4.2 10 0 13.6M19.8 5.2c-4.2 3.6-4.2 10 0 13.6' stroke='%2314201A' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  @font-face { font-family: 'Saira'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/Saira-700.ttf') format('truetype'); }
+  @font-face { font-family: 'Saira'; font-weight: 800; font-style: normal; font-display: swap; src: url('fonts/Saira-800.ttf') format('truetype'); }
+  @font-face { font-family: 'Saira'; font-weight: 900; font-style: normal; font-display: swap; src: url('fonts/Saira-900.ttf') format('truetype'); }
+  @font-face { font-family: 'Figtree'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/Figtree-400.ttf') format('truetype'); }
+  @font-face { font-family: 'Figtree'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/Figtree-600.ttf') format('truetype'); }
+  :root {
+    --chalk: #F3F5EF;
+    --paper: #FFFFFF;
+    --ink: #14201A;
+    --ink-soft: #34413A;
+    --muted: #5F6B63;
+    --line: #D6DCD1;
+    --volt: #C8F03A;
+    --on-volt: #14201A;
+    --on-volt-soft: #3A4A12;
+    --night: #0A0F0C;
+    --night-panel: #111A14;
+    --night-ink: #EDF2EA;
+    --night-muted: #A9B5AD;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --chalk: #0A0F0C;
+      --paper: #121A15;
+      --ink: #EDF2EA;
+      --ink-soft: #C4CEC6;
+      --muted: #97A39B;
+      --line: #26312B;
+      --night: #030504;
+      --night-panel: #0C130F;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --chalk: #0A0F0C;
+    --paper: #121A15;
+    --ink: #EDF2EA;
+    --ink-soft: #C4CEC6;
+    --muted: #97A39B;
+    --line: #26312B;
+    --night: #030504;
+    --night-panel: #0C130F;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--chalk); color: var(--ink); font: 400 17px/1.6 Figtree, system-ui, sans-serif; }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 56rem; margin: 0 auto; padding: 0 16px; }
+
+  /* The top of the page is a courtside board: night court, faint court lines, the call in volt. */
+  .board { position: relative; overflow: hidden; background: var(--night); color: var(--night-ink); }
+  .board .lines { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.12; pointer-events: none; }
+  .board .wrap { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 24px 40px; align-items: end; padding-top: 36px; padding-bottom: 44px; }
+  .brand { display: flex; align-items: center; gap: 10px; margin: 0 0 56px; font: 800 20px/1 Saira, sans-serif; color: var(--night-muted); letter-spacing: -0.01em; }
+  h1 { margin: 0; font: 900 clamp(56px, 15vw, 128px)/0.86 Saira, sans-serif; letter-spacing: -0.035em; }
+  .lead { margin: 20px 0 0; max-width: 34ch; font-size: 19px; line-height: 1.5; color: var(--night-muted); }
+  .lead strong { color: var(--night-ink); font-weight: 600; }
+  .call { display: grid; justify-items: center; gap: 10px; }
+  .call-chip { background: var(--volt); color: var(--on-volt); font: 900 clamp(40px, 9vw, 64px)/1 Saira, sans-serif; letter-spacing: -0.02em; padding: 14px 24px 10px; border-radius: 22px; font-variant-numeric: tabular-nums; }
+  .call-note { font-size: 14px; color: var(--night-muted); }
+  .wave { display: flex; gap: 5px; align-items: center; height: 26px; }
+  .wave i { display: block; width: 5px; border-radius: 3px; background: var(--volt); }
+  .wave i:nth-child(1) { height: 10px; } .wave i:nth-child(2) { height: 22px; } .wave i:nth-child(3) { height: 15px; } .wave i:nth-child(4) { height: 26px; } .wave i:nth-child(5) { height: 12px; }
+  @media (max-width: 640px) {
+    .board .wrap { grid-template-columns: 1fr; }
+    .call { justify-items: start; }
+    .brand { margin-bottom: 36px; }
+  }
+
+  /* Two panels like the app's scoreboard: the volt one is "serving". */
+  main.wrap { padding-top: 32px; padding-bottom: 40px; }
+  .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 16px; }
+  .panel { border-radius: 28px; padding: 24px 24px 22px; min-height: 13rem; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; text-decoration: none; }
+  .panel.serving { background: var(--volt); color: var(--on-volt); }
+  .panel.plain { background: var(--paper); color: var(--ink); border: 1.5px solid var(--line); }
+  a.panel:hover.plain { border-color: var(--ink); }
+  .panel .kicker { margin: 0; font: 600 15px/1.3 Figtree, sans-serif; }
+  .panel.serving .kicker { color: var(--on-volt-soft); }
+  .panel.plain .kicker { color: var(--muted); }
+  .panel h2 { margin: 6px 0 0; font: 800 clamp(26px, 5vw, 34px)/1.1 Saira, sans-serif; letter-spacing: -0.015em; overflow-wrap: break-word; }
+  .panel p.body { margin: 0; font-size: 16px; line-height: 1.5; }
+  .panel.serving p.body { color: var(--on-volt-soft); }
+  .panel.plain p.body { color: var(--ink-soft); }
+  .panel .foot { display: flex; align-items: center; gap: 8px; font: 600 15px/1 Figtree, sans-serif; }
+  .ball { width: 10px; height: 10px; border-radius: 50%; background: currentColor; flex: none; }
+  .sports { margin: 32px 0 0; color: var(--muted); font-size: 15px; max-width: 60ch; }
+  footer.wrap { color: var(--muted); font-size: 14px; padding-top: 8px; padding-bottom: 48px; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; }
+  footer a { text-decoration-color: var(--volt); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<header class="board">
+  <svg class="lines" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect x="40" y="30" width="920" height="360" fill="none" stroke="#C8F03A" stroke-width="4"/>
+    <line x1="40" y1="75" x2="960" y2="75" stroke="#C8F03A" stroke-width="3"/>
+    <line x1="40" y1="345" x2="960" y2="345" stroke="#C8F03A" stroke-width="3"/>
+    <line x1="270" y1="75" x2="270" y2="345" stroke="#C8F03A" stroke-width="3"/>
+    <line x1="730" y1="75" x2="730" y2="345" stroke="#C8F03A" stroke-width="3"/>
+    <line x1="270" y1="210" x2="730" y2="210" stroke="#C8F03A" stroke-width="3"/>
+    <line x1="500" y1="20" x2="500" y2="400" stroke="#C8F03A" stroke-width="8"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <p class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#C8F03A"/><path d="M4.2 5.2c4.2 3.6 4.2 10 0 13.6M19.8 5.2c-4.2 3.6-4.2 10 0 13.6" stroke="#14201A" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        Scorekeeper app
+      </p>
+      <h1>Servecall</h1>
+      <p class="lead">Tap the side that won the rally. <strong>Servecall keeps the score and calls it out loud.</strong></p>
+    </div>
+    <div class="call" aria-hidden="true">
+      <div class="call-chip">7-4-2</div>
+      <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="call-note">a pickleball call</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="panels">
+    <a class="panel serving" href="mailto:fellasontheway@gmail.com?subject=Servecall">
+      <div>
+        <p class="kicker">Support</p>
+        <h2>fellasontheway<wbr>@gmail.com</h2>
+      </div>
+      <p class="body">Questions, a rule that scored differently from your club, or a voice call that sounded wrong: write to us and name the sport and language.</p>
+      <span class="foot"><span class="ball" aria-hidden="true"></span>Write an e-mail</span>
+    </a>
+    <a class="panel plain" href="privacy/">
+      <div>
+        <p class="kicker">Privacy policy</p>
+        <h2>What Servecall stores, and where</h2>
+      </div>
+      <p class="body">Matches stay on your phone; ads come from Google AdMob. Summaries in Español, Italiano and Português.</p>
+      <span class="foot">Read the policy <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+  <p class="sports">Pickleball, padel, tennis, beach tennis, badminton, table tennis and volleyball, with Americano and Mexicano events for padel, pickleball, tennis, beach tennis and badminton.</p>
+</main>
+
+<footer class="wrap">
+  <ul class="foot-links">
+    <li>Servecall</li>
+    <li><a href="privacy/">Privacy policy</a></li>
+    <li><a href="mailto:fellasontheway@gmail.com?subject=Servecall">fellasontheway@gmail.com</a></li>
+  </ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servecall privacy policy</title>
+<meta name="description" content="How the Servecall scorekeeper handles your data: matches stay on your phone, ads come from Google AdMob.">
+<link rel="canonical" href="https://ibrahimbilgic.github.io/servecall-web/privacy/">
+<style>
+  @font-face { font-family: 'Saira'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/Saira-700.ttf') format('truetype'); }
+  @font-face { font-family: 'Saira'; font-weight: 800; font-style: normal; font-display: swap; src: url('../fonts/Saira-800.ttf') format('truetype'); }
+  @font-face { font-family: 'Saira'; font-weight: 900; font-style: normal; font-display: swap; src: url('../fonts/Saira-900.ttf') format('truetype'); }
+  @font-face { font-family: 'Figtree'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/Figtree-400.ttf') format('truetype'); }
+  @font-face { font-family: 'Figtree'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/Figtree-600.ttf') format('truetype'); }
+  :root {
+    --chalk: #F3F5EF;
+    --paper: #FFFFFF;
+    --ink: #14201A;
+    --ink-soft: #34413A;
+    --muted: #5F6B63;
+    --line: #D6DCD1;
+    --volt: #C8F03A;
+    --on-volt: #14201A;
+    --court: #14201A;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --chalk: #0A0F0C;
+      --paper: #121A15;
+      --ink: #EDF2EA;
+      --ink-soft: #C4CEC6;
+      --muted: #97A39B;
+      --line: #26312B;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --chalk: #0A0F0C;
+    --paper: #121A15;
+    --ink: #EDF2EA;
+    --ink-soft: #C4CEC6;
+    --muted: #97A39B;
+    --line: #26312B;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--chalk);
+    color: var(--ink);
+    font: 400 17px/1.6 Figtree, system-ui, sans-serif;
+  }
+  a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--volt); }
+  a:focus-visible { outline: 3px solid var(--volt); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 16px; }
+
+  header.band { background: var(--volt); color: var(--on-volt); }
+  header .wrap { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; padding-top: 28px; padding-bottom: 32px; }
+  .brand { display: flex; width: fit-content; align-items: center; gap: 10px; font: 800 22px/1 Saira, sans-serif; letter-spacing: -0.02em; margin: 0 0 40px; text-decoration: none; }
+  h1 { font: 900 clamp(40px, 11vw, 72px)/0.92 Saira, sans-serif; letter-spacing: -0.03em; margin: 0; }
+  .lead { font-size: 19px; line-height: 1.5; margin: 18px 0 0; max-width: 32ch; }
+  .court { width: 96px; height: auto; display: block; }
+  @media (max-width: 420px) { .court { width: 64px; } }
+
+  main { padding: 8px 0 56px; }
+  section { padding: 28px 0 4px; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  h2 { font: 800 26px/1.15 Saira, sans-serif; letter-spacing: -0.01em; margin: 0 0 10px; }
+  h3 { font: 700 19px/1.3 Saira, sans-serif; margin: 22px 0 6px; }
+  p, li { color: var(--ink-soft); max-width: 68ch; }
+  ul { padding-left: 1.1em; margin: 0 0 16px; }
+  li { margin: 6px 0; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 12px; margin: 24px 0 8px; }
+  .fact { background: var(--paper); border-radius: 18px; padding: 16px 18px; }
+  .fact b { display: block; font: 800 20px/1.2 Saira, sans-serif; color: var(--ink); margin-bottom: 4px; }
+  .fact span { display: block; color: var(--muted); font-size: 15px; line-height: 1.45; }
+
+  .langs-label { margin: 20px 0 0; color: var(--muted); font-size: 15px; }
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; padding: 0; list-style: none; }
+  .langs a { display: inline-block; padding: 10px 16px; min-height: 44px; border: 1.5px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--paper); font-weight: 600; }
+  .langs a:hover { border-color: var(--ink); }
+  .summary { background: var(--paper); border-radius: 22px; padding: 4px 20px 12px; margin: 20px 0; }
+  .summary h3 { margin-top: 18px; }
+  .contact { font: 700 20px/1.3 Saira, sans-serif; color: var(--ink); }
+  footer { color: var(--muted); font-size: 14px; padding: 0 0 40px; }
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="../">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#14201A"/><path d="M4.2 5.2c4.2 3.6 4.2 10 0 13.6M19.8 5.2c-4.2 3.6-4.2 10 0 13.6" stroke="#C8F03A" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        Servecall
+      </a>
+      <h1>Privacy policy</h1>
+      <p class="lead">Servecall keeps score on your phone and reads it out loud. Here is what that means for your data.</p>
+    </div>
+    <svg class="court" viewBox="-1 -1 12.2 22.2" aria-hidden="true">
+      <rect x="5.1" y="10.1" width="4.9" height="6.85" fill="#F3F5EF"/>
+      <rect x="0.1" y="0.1" width="10" height="20" fill="none" stroke="var(--court)" stroke-width="0.5"/>
+      <line x1="0.1" y1="3.15" x2="10.1" y2="3.15" stroke="var(--court)" stroke-width="0.22"/>
+      <line x1="0.1" y1="17.05" x2="10.1" y2="17.05" stroke="var(--court)" stroke-width="0.22"/>
+      <line x1="5.1" y1="3.15" x2="5.1" y2="17.05" stroke="var(--court)" stroke-width="0.22"/>
+      <line x1="-0.6" y1="10.1" x2="10.8" y2="10.1" stroke="var(--court)" stroke-width="0.5" stroke-linecap="round"/>
+      <circle cx="7.55" cy="21" r="0.5" fill="var(--court)"/>
+    </svg>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="facts" role="list">
+    <div class="fact" role="listitem"><b>On your phone</b><span>Names, rallies and settings never leave the device.</span></div>
+    <div class="fact" role="listitem"><b>No sign-in</b><span>There is no Servecall server to send anything to.</span></div>
+    <div class="fact" role="listitem"><b>Ads from AdMob</b><span>Shown on menus and after a match summary, never on the live scoreboard.</span></div>
+  </div>
+
+  <nav aria-label="Summaries in other languages">
+    <p class="langs-label">Short summaries:</p>
+    <ul class="langs">
+      <li><a href="#es" hreflang="es" lang="es">Español</a></li>
+      <li><a href="#it" hreflang="it" lang="it">Italiano</a></li>
+      <li><a href="#pt-br" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2>What Servecall stores</h2>
+    <p>To keep score, you type player or team names and tap which side won each rally. For Americano and Mexicano events you also type the players' names. Servecall saves on your device:</p>
+    <ul>
+      <li>the names you entered and the match settings (sport, format, who served first);</li>
+      <li>every rally you recorded, with the time it was recorded, so a match can be resumed, undone and summarised;</li>
+      <li>your preferences: voice calls on or off, voice and app language, appearance, vibration.</li>
+    </ul>
+    <p>All of it lives in the app's storage on this phone, the same way a paper score sheet stays in your bag: Servecall never uploads it, and we could not read it if we wanted to. You can delete a single match by pressing and holding it in History, delete all matches with <strong>Settings, Delete match history</strong>, or remove everything by uninstalling the app.</p>
+  </section>
+
+  <section>
+    <h2>Voice calls</h2>
+    <p>Scores are spoken by the text-to-speech engine built into your phone. Servecall does not record audio and does not use the microphone. If the voice for your chosen language is not installed, the app tells you once and your phone's default voice is used.</p>
+  </section>
+
+  <section>
+    <h2>Sharing a result and rating the app</h2>
+    <p>When you tap <strong>Share result</strong> or <strong>Share table</strong>, the image is drawn on your phone and handed to the app you pick in your phone's share sheet. Servecall does not upload it anywhere.</p>
+    <p>After a few finished matches Servecall may open the rating window of the App Store or Google Play. That window belongs to Apple or Google; Servecall does not see what you write in it.</p>
+  </section>
+
+  <section>
+    <h2>Advertising</h2>
+    <p>Ads from Google AdMob pay for Servecall. Banners appear on the home, match setup, history and match summary screens. A full-screen ad may appear when you leave the summary of a finished match. The live scoreboard and the Americano and Mexicano screens never show an ad, and the first match you finish has no full-screen ad.</p>
+    <p>To deliver and measure ads, Google may process your device's advertising identifier, an approximate location derived from your IP address, and information about how ads are viewed and tapped. Ads are limited to content rated suitable for everyone.</p>
+    <h3>Your choices</h3>
+    <ul>
+      <li><strong>Consent.</strong> In the European Economic Area, the United Kingdom, Switzerland and other places where it is required, Google's consent form is shown before ads are personalised. You can change your answer at any time in <strong>Settings, Privacy choices</strong>.</li>
+      <li><strong>Tracking on iPhone and iPad.</strong> Servecall asks for permission to track. If you decline, ads are not personalised with your advertising identifier, and every feature works the same.</li>
+      <li><strong>Android.</strong> You can reset or delete your advertising ID in your phone's Google settings.</li>
+    </ul>
+    <p>Google's use of this data is described at <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Servecall is made for players and scorekeepers of all ages and is not directed at children. We do not knowingly collect personal information from anyone, including children.</p>
+  </section>
+
+  <section>
+    <h2>Changes and contact</h2>
+    <p>When anything on this page changes, the date at the bottom changes with it. Questions about privacy in Servecall:</p>
+    <p class="contact"><a href="mailto:fellasontheway@gmail.com?subject=Servecall%20privacy">fellasontheway@gmail.com</a></p>
+  </section>
+
+  <section id="es" lang="es">
+    <h2>Resumen en español</h2>
+    <div class="summary">
+      <p>Servecall guarda en tu teléfono los nombres, los puntos de cada partido y tus ajustes. Todo se queda en el teléfono, como una hoja de puntos en tu bolsa: Servecall no lo sube a ninguna parte. Puedes borrar un partido manteniéndolo pulsado en el historial, o todo el historial desde Ajustes.</p>
+      <p>La voz usa el motor de texto a voz del teléfono; la app no graba audio ni usa el micrófono.</p>
+      <p>La app muestra anuncios de Google AdMob en los menús y al salir del resumen de un partido terminado, nunca en el marcador en juego ni en los americanos. Al compartir un resultado, la imagen se crea en el teléfono y se entrega a la app que elijas; no la subimos a ningún sitio. Google puede usar el identificador de publicidad y una ubicación aproximada. Donde la ley lo exige, se pide tu consentimiento y puedes cambiarlo en Ajustes, Opciones de privacidad.</p>
+    </div>
+  </section>
+
+  <section id="it" lang="it">
+    <h2>Sintesi in italiano</h2>
+    <div class="summary">
+      <p>Servecall salva sul telefono i nomi, i punti di ogni partita e le tue impostazioni. Tutto resta sul telefono, come un foglio segnapunti nella borsa: Servecall non lo carica da nessuna parte. Puoi eliminare una partita tenendola premuta nello storico, oppure tutto lo storico dalle Impostazioni.</p>
+      <p>La voce usa la sintesi vocale del telefono; l'app non registra audio e non usa il microfono.</p>
+      <p>L'app mostra annunci di Google AdMob nei menu e quando esci dal riepilogo di una partita finita, mai sul tabellone durante il gioco né negli americani. Quando condividi un risultato, l'immagine viene creata sul telefono e passata all'app che scegli; non la carichiamo da nessuna parte. Google può usare l'identificatore pubblicitario e una posizione approssimativa. Dove la legge lo richiede ti chiediamo il consenso, che puoi cambiare in Impostazioni, Scelte sulla privacy.</p>
+    </div>
+  </section>
+
+  <section id="pt-br" lang="pt-BR">
+    <h2>Resumo em português</h2>
+    <div class="summary">
+      <p>O Servecall salva no celular os nomes, os pontos de cada partida e seus ajustes. Tudo fica no celular, como uma súmula na sua bolsa: o Servecall não envia nada para lugar nenhum. Você pode apagar uma partida tocando e segurando no histórico, ou apagar todo o histórico nos Ajustes.</p>
+      <p>A voz usa o mecanismo de texto para fala do celular; o app não grava áudio e não usa o microfone.</p>
+      <p>O app mostra anúncios do Google AdMob nos menus e ao sair do resumo de uma partida encerrada, nunca no placar durante o jogo nem nos americanos. Ao compartilhar um resultado, a imagem é criada no celular e entregue ao app que você escolher; não a enviamos para lugar nenhum. O Google pode usar o identificador de publicidade e uma localização aproximada. Onde a lei exige, pedimos seu consentimento, que pode ser alterado em Ajustes, Opções de privacidade.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>Last updated 24 September 2026.</p>
+</footer>
+</body>
+</html>
