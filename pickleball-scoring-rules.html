@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pickleball Scoring Explained: How to Call the Score (7-4-2)</title>
+<meta name="description" content="How pickleball scoring works: what 7-4-2 means, who calls what, side-out versus rally scoring, singles and doubles, plus how tennis and padel scores are called. Includes a score-call practice board.">
+<link rel="canonical" href="https://ibrahimbilgic.github.io/servecall-web/pickleball-scoring-rules.html">
+<style>
+  @font-face { font-family: 'Saira'; font-weight: 800; font-display: swap; src: url('fonts/Saira-800.ttf') format('truetype'); }
+  @font-face { font-family: 'Saira'; font-weight: 900; font-display: swap; src: url('fonts/Saira-900.ttf') format('truetype'); }
+  @font-face { font-family: 'Source Sans 3'; font-weight: 400; font-display: swap; src: url('fonts/SourceSans3-400.ttf') format('truetype'); }
+  @font-face { font-family: 'Source Sans 3'; font-weight: 600; font-display: swap; src: url('fonts/SourceSans3-600.ttf') format('truetype'); }
+  :root { --chalk:#F3F5EF; --paper:#FFFFFF; --ink:#14201A; --ink-soft:#34413A; --muted:#5F6B63; --line:#D6DCD1; --volt:#C8F03A; --on-volt:#14201A; --night:#0A0F0C; --night-ink:#EDF2EA; --night-muted:#A9B5AD; color-scheme:light; }
+  @media (prefers-color-scheme: dark) { :root { --chalk:#0A0F0C; --paper:#121A15; --ink:#EDF2EA; --ink-soft:#C4CEC6; --muted:#97A39B; --line:#26312B; --night:#030504; color-scheme:dark; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--chalk); color:var(--ink); font:400 18px/1.62 'Source Sans 3', system-ui, sans-serif; }
+  a { color:inherit; text-decoration-color:var(--volt); text-decoration-thickness:2px; text-underline-offset:3px; }
+  a:focus-visible, button:focus-visible, select:focus-visible { outline:3px solid var(--volt); outline-offset:3px; border-radius:6px; }
+  .wrap { max-width:46rem; margin:0 auto; padding:0 18px; }
+  header.board { background:var(--night); color:var(--night-ink); padding:22px 0 34px; }
+  .crumb { font:600 15px/1 'Source Sans 3'; color:var(--night-muted); margin:0 0 30px; } .crumb a { text-decoration-color:var(--volt); }
+  h1 { margin:0; font:900 clamp(34px,8.5vw,56px)/1 Saira, sans-serif; letter-spacing:-0.02em; }
+  header p.lead { margin:14px 0 0; color:var(--night-muted); font-size:19px; max-width:38ch; } header p.lead b { color:var(--night-ink); font-weight:600; }
+  h2 { font:800 clamp(26px,5.5vw,34px)/1.1 Saira, sans-serif; letter-spacing:-0.015em; margin:46px 0 12px; }
+  h3 { font:800 20px/1.2 Saira, sans-serif; margin:26px 0 4px; }
+  /* practice board */
+  .board-sim { background:var(--night); color:var(--night-ink); border-radius:28px; padding:20px; margin:-18px 0 0; position:relative; box-shadow:0 14px 34px rgba(0,0,0,.22); }
+  .opts { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  .opts label { font:600 13px/1 'Source Sans 3'; color:var(--night-muted); display:grid; gap:5px; }
+  .opts select { font:600 16px 'Source Sans 3'; padding:8px 10px; border-radius:10px; border:1.5px solid #2c3a31; background:#111A14; color:var(--night-ink); }
+  .chip { text-align:center; background:var(--volt); color:var(--on-volt); border-radius:22px; padding:14px 10px 10px; }
+  .chip .num { font:900 clamp(52px,16vw,88px)/1 Saira, sans-serif; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+  .chip .say { font:600 17px/1.3 'Source Sans 3'; color:#3A4A12; min-height:1.4em; }
+  .state { margin:12px 0 4px; font-size:16px; color:var(--night-muted); min-height:3em; }
+  .tap { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+  .tap button, .reset { font:800 18px/1.2 Saira, sans-serif; padding:16px 10px; border-radius:18px; border:2px solid var(--volt); background:transparent; color:var(--night-ink); cursor:pointer; }
+  .tap button:active { background:var(--volt); color:var(--on-volt); }
+  .reset { margin-top:10px; width:100%; border-color:#2c3a31; font-size:15px; padding:10px; color:var(--night-muted); }
+  .eg { background:var(--paper); border:1.5px solid var(--line); border-radius:18px; padding:4px 18px 14px; margin:14px 0; }
+  table { width:100%; border-collapse:collapse; font-size:16px; } th,td { padding:8px 8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; } th { color:var(--muted); font-weight:600; font-size:14px; }
+  td.c { font:800 18px Saira, sans-serif; white-space:nowrap; }
+  .scroll { overflow-x:auto; }
+  .pill { display:inline-block; background:var(--volt); color:var(--on-volt); font:800 14px/1 Saira; padding:4px 9px 3px; border-radius:99px; }
+  ul.tight { padding-left:1.2em; } ul.tight li { margin:6px 0; }
+  .cta { margin:50px 0 0; background:var(--volt); color:var(--on-volt); border-radius:28px; padding:24px; }
+  .cta h2 { margin:0 0 8px; font-size:26px; } .cta p { margin:6px 0; } .cta a { font-weight:600; text-decoration-color:var(--on-volt); }
+  footer { color:var(--muted); font-size:14px; padding:26px 0 48px; }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does 7-4-2 mean in pickleball?","acceptedAnswer":{"@type":"Answer","text":"In doubles with traditional side-out scoring, the server calls three numbers: the serving team's score, the receiving team's score, and the server number (1 or 2). 7-4-2 means the serving team has 7, the receivers have 4, and the second server on the serving team is serving."}},
+{"@type":"Question","name":"Why does the first server of a pickleball doubles game call 0-0-2?","acceptedAnswer":{"@type":"Answer","text":"The team serving first in a game only gets one server before a side out. Calling the server number as 2 from the start means the first fault ends their serve instead of passing it to a partner."}},
+{"@type":"Question","name":"Who can score in pickleball?","acceptedAnswer":{"@type":"Answer","text":"With side-out scoring only the serving side can score. With rally scoring either side scores on every rally."}},
+{"@type":"Question","name":"How do you win a game of pickleball?","acceptedAnswer":{"@type":"Answer","text":"Reach the target score (11 is common; 15 and 21 are also used) with a lead of at least two points."}}]},
+{"@type":"HowTo","name":"How to call the score in pickleball doubles","step":[
+{"@type":"HowToStep","name":"Say the serving score first","text":"Start with your own team's score, as the serving side."},
+{"@type":"HowToStep","name":"Then the receiving score","text":"Say the other team's score second."},
+{"@type":"HowToStep","name":"Finish with the server number","text":"Say 1 if the first server on your team is serving, or 2 for the second. The team that serves first in a game starts the game as server 2, so the opening call is 0-0-2."}]}
+]}
+</script>
+</head>
+<body>
+<header class="board">
+  <div class="wrap">
+    <p class="crumb"><a href="./">Servecall</a> / scoring guide</p>
+    <h1>Pickleball scoring: how to call the score</h1>
+    <p class="lead">What <b>7-4-2</b> actually means, who is allowed to score, and how the call changes between doubles, singles and rally scoring.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="board-sim" aria-labelledby="sim">
+    <h2 id="sim" style="margin:0 0 12px;font-size:22px">Try the calls on a practice board</h2>
+    <div class="opts">
+      <label>Format<select id="oFormat"><option value="doubles">Doubles</option><option value="singles">Singles</option></select></label>
+      <label>Scoring<select id="oScoring"><option value="sideout">Side-out</option><option value="rally">Rally</option></select></label>
+      <label>Game to<select id="oTarget"><option>11</option><option>15</option><option>21</option></select></label>
+    </div>
+    <div class="chip" aria-live="polite"><div class="num" id="simNum">0-0-2</div><div class="say" id="simSay">zero, zero, two</div></div>
+    <div class="state" id="simState"></div>
+    <div class="tap"><button id="bServe" type="button">Serving side won the rally</button><button id="bRecv" type="button">Receiving side won the rally</button></div>
+    <button class="reset" id="bReset" type="button">Start a new game</button>
+  </section>
+
+  <h2>The short version</h2>
+  <ul class="tight">
+    <li>Say the <b>serving team's score first</b>, then the receiving team's score.</li>
+    <li>In <b>doubles with side-out scoring</b>, add a third number: which server is serving, 1 or 2.</li>
+    <li>In <b>singles</b> and in <b>rally scoring</b>, there are only two numbers.</li>
+    <li>A game goes to 11 points (some events use 15 or 21) and you must <b>win by two</b>.</li>
+  </ul>
+
+  <h2>Side-out scoring, the traditional way</h2>
+  <p>Only the team that is serving can score. If they win the rally they get a point and the same server serves again, moving to the other side of the court. If they lose it, the serve passes on and nobody scores.</p>
+  <h3>Doubles: two servers per team</h3>
+  <p>Each team has a first and a second server. When the serving team loses a rally, the first server hands over to their partner (the second server). When the second server loses one, it is a <span class="pill">side out</span>: the other team takes over, and the player standing in the right-hand court serves first.</p>
+  <h3>Why every game starts at 0-0-2</h3>
+  <p>The team that serves first in a game gets just one server, so the call starts as "zero, zero, two". The first lost rally is already a side out, and from then on both teams get two servers each turn.</p>
+  <h3>Where each player stands</h3>
+  <p>The serving team's players only switch sides after winning a point, so a team's positions follow its own score: the player who started the game in the right court is in the right court whenever their team's score is even. The server serves from the right when the serving score is even and from the left when it is odd.</p>
+  <div class="eg">
+    <h3>An example game</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>What happened</th><th>Call</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Game starts, Team A serves</td><td class="c">0-0-2</td><td>One server only for the first serve.</td></tr>
+        <tr><td>A wins the rally, twice</td><td class="c">2-0-2</td><td>The same server keeps going and the score rises.</td></tr>
+        <tr><td>B wins the rally</td><td class="c">0-2-1</td><td>Side out. B serves, so B's 0 is called first; A has 2; B's first server serves.</td></tr>
+        <tr><td>B wins the next rally</td><td class="c">1-2-1</td><td>The serving team scores.</td></tr>
+        <tr><td>A wins the next rally</td><td class="c">1-2-2</td><td>B's first server lost it, so B's second server serves. No score change.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <h2>Rally scoring</h2>
+  <p>Some events use rally scoring, where every rally scores a point for whoever wins it, serving or not. The call is two numbers only, serving score then receiving score, because there is no second server: when the receiving side wins a rally they score and take over the serve. A rally scoring game still has to be won by two points.</p>
+  <p>The practice board above runs both systems, so you can see how the third number simply disappears.</p>
+
+  <h2>Singles</h2>
+  <p>Singles has one server per side, so there is no server number and the call is two numbers: your score, then your opponent's. You serve from the right court when your score is even and the left when it is odd. When you lose a rally in side-out singles it is a side out and your opponent serves.</p>
+
+  <h2>Ending a game and switching ends</h2>
+  <ul class="tight">
+    <li>A game ends when one side reaches the target (11, 15 or 21) <b>and</b> leads by at least two. 11-10 keeps going; 12-10 ends it.</li>
+    <li>Between games the teams change ends and the team that received first serves first in the next game.</li>
+    <li>In a deciding game, teams change ends the first time a side reaches the midpoint: 6 in a game to 11, 8 in a game to 15, 11 in a game to 21.</li>
+  </ul>
+
+  <h2>If you also play tennis or padel</h2>
+  <p>Tennis-style scoring is called the other way round for your own server: the <b>server's score is still said first</b>, but in words and in steps of love, fifteen, thirty, forty.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Points</th><th>Spoken</th></tr></thead>
+    <tbody>
+      <tr><td>Server 15, receiver 0</td><td class="c">Fifteen, love</td></tr>
+      <tr><td>Both 30</td><td class="c">Thirty all</td></tr>
+      <tr><td>Both at 40</td><td class="c">Deuce</td></tr>
+      <tr><td>One point ahead after deuce</td><td class="c">Advantage, (player)</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>At deuce you can play it three ways.</b> Classic advantage means you must win by two points. No-ad (or golden point in padel) means one deciding point at the first 40-40, and the receivers choose which side to receive on. The Star Point version used in some padel events lets the game go to deuce up to three times, with one deciding point at the third deuce, where the receivers again choose the side.</p>
+
+  <aside class="cta" aria-labelledby="ctaTitle">
+    <h2 id="ctaTitle">Let the phone do the calling</h2>
+    <p>Servecall is a scorekeeper app I make for racket and net sports. You tap the side that won the rally, it keeps score by the rules above (side-out or rally scoring for pickleball, plus padel, tennis, beach tennis, badminton, table tennis and volleyball) and speaks the call. It shows ads.</p>
+    <p><a href="https://play.google.com/store/apps/details?id=com.appfellas.servecall&amp;referrer=utm_source%3Dweb%26utm_medium%3Drules_page%26utm_campaign%3Dorganic">Servecall on Google Play</a></p>
+  </aside>
+  <footer>Rules vary by event and sanctioning body; check the one you play under. <a href="privacy/">Privacy</a> &middot; <a href="./">Servecall</a></footer>
+</main>
+<script>
+(function () {
+  var NW = ["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","twenty-one","twenty-two","twenty-three"];
+  function init(o) { var d = o.format === "doubles"; return { doubles: d, rally: o.scoring === "rally", target: o.target, score: [0, 0], serving: 0, server: 0, sn: (d && o.scoring === "sideout") ? 2 : 1, finished: false, winner: null, notes: [] }; }
+  function rcp(s) { return s % 2 === 0 ? 0 : 1; }
+  function step(s, w) {
+    if (s.finished) return s;
+    var score = s.score.slice(), serving = s.serving, server = s.server, sn = s.sn, notes = [];
+    if (w === serving) score[serving]++;
+    else if (s.rally) { score[w]++; serving = w; server = s.doubles ? rcp(score[w]) : 0; sn = 1; notes.push("Side out"); }
+    else if (s.doubles && sn === 1) { sn = 2; server = 1 - server; notes.push("Second server"); }
+    else { serving = 1 - serving; server = s.doubles ? rcp(score[serving]) : 0; sn = 1; notes.push("Side out"); }
+    var fin = false, win = null;
+    if (score[0] >= s.target && score[0] - score[1] >= 2) { fin = true; win = 0; } else if (score[1] >= s.target && score[1] - score[0] >= 2) { fin = true; win = 1; }
+    return { doubles: s.doubles, rally: s.rally, target: s.target, score: score, serving: serving, server: server, sn: sn, finished: fin, winner: win, notes: notes };
+  }
+  function nums(s) { var a = s.score[s.serving], b = s.score[1 - s.serving]; return (s.doubles && !s.rally) ? [a, b, s.sn] : [a, b]; }
+  var wd = function (n) { return NW[n] !== undefined ? NW[n] : String(n); };
+  window.PB = { init: init, step: step, nums: nums };
+  if (typeof document === "undefined") return;
+  var $ = function (i) { return document.getElementById(i); }, st;
+  function reset() { st = init({ format: $("oFormat").value, scoring: $("oScoring").value, target: parseInt($("oTarget").value, 10) }); draw(); }
+  function draw() {
+    var team = ["Team A", "Team B"];
+    if (st.finished) {
+      $("simNum").textContent = st.score[0] + "-" + st.score[1]; $("simSay").textContent = "Game, " + team[st.winner];
+      $("simState").textContent = team[st.winner] + " wins " + st.score[st.winner] + " to " + st.score[1 - st.winner] + ". Start a new game to keep practicing."; return;
+    }
+    var n = nums(st);
+    $("simNum").textContent = n.join("-"); $("simSay").textContent = n.map(wd).join(", ");
+    $("simState").textContent = (st.notes.length ? st.notes.join(". ") + ". " : "") + team[st.serving] + " is serving" + (st.doubles && !st.rally ? " (server " + st.sn + ")" : "") + ". Score: A " + st.score[0] + ", B " + st.score[1] + ".";
+  }
+  $("bServe").onclick = function () { st = step(st, st.serving); draw(); };
+  $("bRecv").onclick = function () { st = step(st, 1 - st.serving); draw(); };
+  $("bReset").onclick = reset;
+  ["oFormat", "oScoring", "oTarget"].forEach(function (i) { $(i).onchange = reset; });
+  reset();
+})();
+</script>
+</body>
+</html>
